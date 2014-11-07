@@ -8,7 +8,7 @@ use bigint;
 use Carp qw(croak);
 use Exporter;
 
-our @ISA    = qw(Exporter);
+our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw( is_currency );
 
 # Version
