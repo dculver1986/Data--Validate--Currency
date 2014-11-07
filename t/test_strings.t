@@ -6,6 +6,15 @@ use Test::Most;
 
 use Data::Validate::Currency qw( is_currency );
 
+
+subtest "Zero dollars" => sub {
+
+    my $zero = '0.00';
+    my $validation = is_currency($zero);
+    cmp_ok( $validation, '==', 1,
+        'correctly returned true' );
+};
+
 subtest "No args- invalid" => sub {
 
     my $bad_args;
