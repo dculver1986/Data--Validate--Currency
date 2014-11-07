@@ -2,7 +2,6 @@ package Data::Validate::Currency;
 
 use strict;
 use warnings;
-use Data::Dumper;
 
 use bigint;
 use Carp qw(croak);
@@ -77,7 +76,7 @@ under the same terms as Perl itself.
 
 sub is_currency {
 
-    my $string = shift;
+    my $string = shift || croak "is_currency requires a currency string";
 
     if ( $string =~ /^\${0,1}\d{1,3}(\,\d{3})*\.\d{2}$|^\${0,1}\d+\.\d{2}$/ ) {
         return 1;
