@@ -3,14 +3,13 @@ package Data::Validate::Currency;
 use strict;
 use warnings;
 
-use bigint;
 use Carp qw(croak);
 use Exporter;
 
 our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw( is_currency );
 
-# Version
+# Version 0.1
 # ABSTRACT: Module to validate if data is valid currency
 
 =pod
@@ -36,9 +35,8 @@ our @EXPORT_OK = qw( is_currency );
 =head1 DESCRIPTION
 
     Module that takes a string and returns a true or false value if the string
-    is a valid currency. Currently only supports en_US format. This has been
-    tested up to Octillion ( 9 groups of 3 zeros ) dollars- but there is no
-    reason it couldn't support more. Dollar sign is optional.
+    is a valid currency. Supports the comma as thousands-separator format,
+    2 and 3 digit decimals. Dollar sign is optional.
 
 =head1 METHODS
 
@@ -78,7 +76,8 @@ sub is_currency {
 
     my $string = shift || croak "is_currency requires a currency string";
 
-    if ( $string =~ /^\${0,1}\d{1,3}(\,\d{3})*\.\d{2}$|^\${0,1}\d+\.\d{2}$/ ) {
+    if ( $string =~
+        /^\${0,1}\d{1,3}(\,\d{3})*\.\d{2,3}$|^\${0,1}\d+\.\d{2,3}$/ ) {
         return 1;
     }
     else {

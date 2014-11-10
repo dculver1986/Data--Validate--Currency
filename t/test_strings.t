@@ -24,6 +24,15 @@ subtest "No args- invalid" => sub {
 
 };
 
+subtest "Three decimal numbers" => sub {
+
+    my $triple_dec = '123.456';
+    my $validation = is_currency($triple_dec);
+
+    cmp_ok($validation, '==', 1,
+        'correctly returned true');
+};
+
 subtest "One dollar" => sub {
 
     my $one_dollar = '$1.00';
