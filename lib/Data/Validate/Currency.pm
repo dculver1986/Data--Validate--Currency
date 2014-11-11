@@ -9,8 +9,8 @@ use Exporter;
 our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw( is_currency );
 
-# Version 0.1
-# ABSTRACT: Module to validate if data is valid currency
+#Version 0.1.0
+#ABSTRACT: Module to validate if data is valid currency
 
 =pod
 
